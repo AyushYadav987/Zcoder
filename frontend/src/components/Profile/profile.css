@@ -1,0 +1,39 @@
+.profile-class
+{
+    width: 60%;
+    height: 400px;
+    position: relative;
+    top: 10em;
+    left: 20%;
+    align-items: center;
+    /* text-align: center; */
+    border: 2px solid rgba(66, 3, 255, 0.367);
+    border-radius: 10px;
+    background-color: black;
+}
+.profile-class button
+{
+    width: 80%;
+    position:relative;
+    top: 5em;
+    left: 8em;
+}
+
+.profile-class h2
+{
+    font-weight: bold;
+    font-size: 40px;
+}
+
+.profile-class p{
+    color: white;
+    position: relative;
+    left: 10em;
+}
+.profile-edit button
+{   
+    margin: 5px;
+    position: relative;
+    top: 3em;
+    left: -3px;
+}

@@ -1,0 +1,122 @@
+.dashboard {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #1a1a2e;
+  padding: 15px 40px;
+  z-index: 999;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+}
+
+.dashboard img {
+  width: 140px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  filter: brightness(140%);
+}
+
+.dashboard img:hover {
+  transform: scale(1.02);
+}
+
+.restdiv, .logindiv {
+  display: flex;
+  align-items: center;
+}
+
+.restdiv {
+  flex: 1;
+  justify-content: center;
+  gap: 25px;
+  padding: 0 20px;
+}
+
+.logindiv {
+  gap: 15px;
+  padding-left: 20px;
+}
+
+.restdiv text, .logindiv text {
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 15px;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.restdiv text:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+.logindiv text {
+  border: 2px solid #4CAF50;
+  background: transparent;
+}
+
+.logindiv text:hover {
+  background: #4CAF50;
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* Active state for navigation items */
+.restdiv text.active, .logindiv text.active {
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Responsive Design */
+@media screen and (max-width: 1200px) {
+  .dashboard {
+    padding: 12px 20px;
+  }
+
+  .restdiv {
+    gap: 15px;
+  }
+
+  .restdiv text, .logindiv text {
+    padding: 6px 12px;
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .dashboard {
+    flex-direction: column;
+    padding: 10px;
+    height: auto;
+  }
+
+  .dashboard img {
+    margin-bottom: 10px;
+  }
+
+  .restdiv, .logindiv {
+    width: 100%;
+    justify-content: center;
+    gap: 10px;
+    padding: 5px 0;
+  }
+
+  .restdiv {
+    flex-wrap: wrap;
+  }
+
+  .logindiv {
+    margin-top: 10px;
+  }
+
+  .restdiv text, .logindiv text {
+    font-size: 13px;
+    padding: 5px 10px;
+  }
+}

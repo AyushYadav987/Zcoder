@@ -1,0 +1,113 @@
+.problem-form {
+  width: 40%;
+  height: 50%;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: black;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+  top: 5em;
+}
+
+.problem-form textarea {
+  width: 90%;
+  height: 80px;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.problem-form label {
+  display: flex;
+  margin: 10px 0;
+
+}
+
+.problem-form label p {
+  position: relative;
+  right: -10%;
+  font-size: 15px;
+  background-color: #ffc501;
+  color: black;
+  border: 2px solid #ffc501;
+  border-radius: 5px;
+  width: 80%;
+  padding: 10px;
+}
+
+.problem-form label p:hover {
+  cursor: pointer;
+  background-color: #08090b;
+  color: #ffc501;
+}
+
+.problem-form label input {
+  width: 20px;
+  position: relative;
+  left: 5%;
+}
+
+.problem-form button {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #ffc501;
+  color: black;
+  border: 2px solid #ffc501;
+  border-radius: 5px;
+}
+
+.problem-form button:hover {
+  cursor: pointer;
+  background-color: #08090b;
+  color: #ffc501;
+}
+
+.problem-list {
+  position: relative;
+  top: 10em;
+  width: 80%;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: black;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 2px solid rgba(0, 36, 107);
+}
+.problem-list h2{
+  font-size: 40px;
+  font-weight: bold;
+
+}
+
+
+.problem-list ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.problem-list li {
+  margin: 10px 0;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.problem-list button {
+  padding: 5px 10px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #dc3545;
+  color: #fff;
+  cursor: pointer;
+}
+
+.problem-list button:hover {
+  background-color: #c82333;
+}
