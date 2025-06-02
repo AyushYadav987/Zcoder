@@ -1,27 +1,24 @@
-// models/userModel.js
-
-const mongoose = require('mongoose');
+const { getDB } = require('../utils/databaseUtils');
 const bcrypt = require('bcryptjs');
 
-const userSchema = new mongoose.Schema({
-  username: { type: String, required: true, unique: true },
-  password: { type: String, required: true },
-  techStack: [String],
-  competitiveRating: Number,
-  favoriteLanguage: String
-});
-
-userSchema.pre('save', async function(next) {
-  if (!this.isModified('password')) return next();
-  const salt = await bcrypt.genSalt(10);
-  this.password = await bcrypt.hash(this.password, salt);
-  next();
-});
-
-userSchema.methods.matchPassword = async function(enteredPassword) {
-  return await bcrypt.compare(enteredPassword, this.password);
-};
-
-const User = mongoose.model('User', userSchema);
-
-module.exports = User;
+module.exports = class User{
+  constructor(username, password, techStack, competitiveRating, favoriteLanguage){
+    this.username = username;
+    this.password = password;
+    this.techStack = techStack;
+    this.competitiveRating = competitiveRating;
+    this.favoriteLanguage = favoriteLanguage;
+  }
+  save(){
+    const db = getDB();
+    return db.collection('users').insertOne(this);
+  }
+  static findByUsername(username){
+    const db = getDB();
+    return db.collection('users').findOne({ username: username });
+  }
+  static findById(id){
+    const db = getDB();
+    return db.collection('users').findOne({ _id: new ObjectId(id) });
+  }
+}

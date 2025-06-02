@@ -1,6 +1,4 @@
-// models/commentModel.js
-
-const mongoose = require('mongoose');
+const { getDB } = require('../utils/databaseUtils');
 
 const commentSchema = new mongoose.Schema({
   userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },

@@ -10,13 +10,14 @@ const generateToken = (id) => {
 exports.signup = async (req, res) => {
   const { username, password } = req.body;
   try {
-    const userExists = await User.findOne({ username });
+    const userExists = await User.findByUsername(username);
 
     if (userExists) {
       return res.status(400).json({ message: 'User already exists' });
     }
 
-    const user = await User.create({ username, password });
+    const user = new User(username, password, techStack, competitiveRating, favoriteLanguage);
+    await user.save();
 
     if (user) {
       res.status(201).json({
@@ -35,13 +36,13 @@ exports.signup = async (req, res) => {
 exports.login = async (req, res) => {
   const { username, password } = req.body;
   try {
-    const user = await User.findOne({ username });
+    const user = await User.findByUsername(username);
 
-    if (user && (await user.matchPassword(password))) {
+    if (user && (await user.password === password)) {
       res.json({
-        _id: user._id,
+        _id: user._id.toString(),
         username: user.username,
-        token: generateToken(user._id)
+        token: generateToken(user._id.toString())
       });
     } else {
       res.status(401).json({ message: 'Invalid username or password' });
