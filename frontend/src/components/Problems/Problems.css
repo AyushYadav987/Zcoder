@@ -2,11 +2,11 @@
   width: 40%;
   height: 50%;
   margin: 50px auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  background-color: black;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 24px;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  background-color: var(--card-bg);
+  box-shadow: var(--shadow-md);
   position: relative;
   top: 5em;
 }
@@ -14,34 +14,44 @@
 .problem-form textarea {
   width: 90%;
   height: 80px;
-  padding: 10px;
-  margin: 10px 0;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  padding: 12px;
+  margin: 8px 0;
+  border: 1px solid var(--input-border);
+  border-radius: 8px;
+  background-color: var(--input-bg);
+  color: var(--text-primary);
+  transition: all 0.2s ease;
+}
+
+.problem-form textarea:focus {
+  outline: none;
+  border-color: var(--input-focus);
+  box-shadow: 0 0 0 3px var(--input-focus-light);
 }
 
 .problem-form label {
   display: flex;
   margin: 10px 0;
-
 }
 
 .problem-form label p {
   position: relative;
   right: -10%;
   font-size: 15px;
-  background-color: #ffc501;
-  color: black;
-  border: 2px solid #ffc501;
-  border-radius: 5px;
+  background-color: var(--accent-primary);
+  color: white;
+  border: none;
+  border-radius: 8px;
   width: 80%;
-  padding: 10px;
+  padding: 12px;
+  transition: all 0.2s ease;
 }
 
 .problem-form label p:hover {
   cursor: pointer;
-  background-color: #08090b;
-  color: #ffc501;
+  background-color: var(--hover-primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
 .problem-form label input {
@@ -52,20 +62,22 @@
 
 .problem-form button {
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   margin: 10px 0;
   font-size: 16px;
   cursor: pointer;
-  background-color: #ffc501;
-  color: black;
-  border: 2px solid #ffc501;
-  border-radius: 5px;
+  background-color: var(--accent-primary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.2s ease;
 }
 
 .problem-form button:hover {
-  cursor: pointer;
-  background-color: #08090b;
-  color: #ffc501;
+  background-color: var(--hover-primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
 .problem-list {
@@ -73,19 +85,19 @@
   top: 10em;
   width: 80%;
   margin: 50px auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  background-color: black;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  border: 2px solid rgba(0, 36, 107);
+  padding: 24px;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  background-color: var(--card-bg);
+  box-shadow: var(--shadow-md);
 }
-.problem-list h2{
+
+.problem-list h2 {
   font-size: 40px;
   font-weight: bold;
-
+  color: var(--text-primary);
+  margin-bottom: 24px;
 }
-
 
 .problem-list ul {
   list-style-type: none;
@@ -93,21 +105,30 @@
 }
 
 .problem-list li {
-  margin: 10px 0;
-  padding: 10px;
-  border-bottom: 1px solid #ccc;
+  margin: 12px 0;
+  padding: 16px;
+  border-bottom: 1px solid var(--border-color);
+  transition: all 0.2s ease;
+}
+
+.problem-list li:hover {
+  background-color: var(--hover-bg);
 }
 
 .problem-list button {
-  padding: 5px 10px;
-  margin-top: 10px;
+  padding: 8px 16px;
+  margin-top: 12px;
   border: none;
-  border-radius: 5px;
-  background-color: #dc3545;
-  color: #fff;
+  border-radius: 8px;
+  background-color: var(--accent-primary);
+  color: white;
   cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
 }
 
 .problem-list button:hover {
-  background-color: #c82333;
+  background-color: var(--hover-primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }

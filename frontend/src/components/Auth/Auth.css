@@ -1,51 +1,110 @@
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f0f2f5;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background-color: var(--secondary-bg);
   margin: 0;
   padding: 0;
 }
-p{
-  color:white;
+
+p {
+  color: var(--text-primary);
 }
 
 h2 {
   text-align: center;
-  color: white;
+  color: var(--text-primary);
+  margin-bottom: 24px;
+  font-size: 2rem;
 }
 
 form {
   display: block;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 40px;
-  width: 30%;
-  background-color: black;
+  margin: 160px auto 40px;
+  width: 400px;
+  background-color: var(--card-bg);
   text-align: center;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 32px;
+  box-shadow: var(--shadow-md);
+  position: relative;
+  top: 40px;
 }
 
 input[type="text"],
 input[type="password"] {
-  width: 92%;
-  padding: 10px;
-  margin: 5px 0;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background-color: white;
-  color: black;
-  font-weight: bold;
+  width: 100%;
+  padding: 12px;
+  margin: 12px 0;
+  border: 1px solid var(--input-border);
+  border-radius: 8px;
+  background-color: var(--input-bg);
+  color: var(--text-primary);
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+  outline: none;
+  border-color: var(--input-focus);
+  box-shadow: 0 0 0 3px var(--input-focus-light);
 }
 
 button {
-  padding: 10px 20px;
-  background-color:white;
-  color: black;
-  border: 2px solid black;
-  border-radius: 4px;
+  width: 100%;
+  padding: 12px 24px;
+  margin-top: 24px;
+  background-color: var(--accent-primary);
+  color: white;
+  border: none;
+  border-radius: 8px;
   cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 48px;
 }
 
 button:hover {
-  background-color: black;
-  color: white;
-  border: 2px solid white;
+  background-color: var(--hover-primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.success {
+  color: var(--accent-success);
+  background-color: var(--success-light);
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.error {
+  color: var(--accent-danger);
+  background-color: var(--danger-light);
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.welcome {
+  color: var(--accent-success);
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
+/* Navigation button styles */
+.restdiv text, .logindiv text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  padding: 0 16px;
+  white-space: nowrap;
 }

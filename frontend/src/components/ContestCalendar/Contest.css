@@ -1,15 +1,17 @@
 .contest-container {
     padding: 20px;
-    font-family: Arial, sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background-color: var(--secondary-bg);
 }
 .warn
 {
     position: relative;
     top: 5em;
+    color: var(--accent-warning);
 }
 h1 , h3 {
     text-align: center;
-    color: #fffcfc;
+    color: var(--text-primary);
 }
 
 .contest-form {
@@ -18,34 +20,47 @@ h1 , h3 {
     align-items: center;
     margin-bottom: 40px;
     width: 30%;
-    background-color: black;
+    background-color: var(--card-bg);
     position: relative;
     top: 5em;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: var(--shadow-md);
 }
 .contest-form input {
     width: 95%;
-    padding: 10px;
-    margin: 5px 0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    background-color: white;
-    color: rgb(10, 3, 3);
-    font-weight: bold;
+    padding: 12px;
+    margin: 8px 0;
+    border: 1px solid var(--input-border);
+    border-radius: 8px;
+    background-color: var(--input-bg);
+    color: var(--text-primary);
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.contest-form input:focus {
+    outline: none;
+    border-color: var(--input-focus);
+    box-shadow: 0 0 0 3px var(--input-focus-light);
 }
 
 .contest-form button {
-    padding: 10px 20px;
-    background-color: #ffc501;
-    color: black;
-    border: 2px solid black;
-    border-radius: 4px;
+    padding: 12px 24px;
+    background-color: var(--accent-primary);
+    color: white;
+    border: none;
+    border-radius: 8px;
     cursor: pointer;
     position: relative;
     top: 10%;
+    font-weight: 600;
+    transition: all 0.2s ease;
 }
 .contest-form button:hover {
-    background-color: black;
-    color:#ffc501;
-    border: 2px solid #ffc501;
+    background-color: var(--hover-primary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
 }
 

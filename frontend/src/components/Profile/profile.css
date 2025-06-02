@@ -7,9 +7,11 @@
     left: 20%;
     align-items: center;
     /* text-align: center; */
-    border: 2px solid rgba(66, 3, 255, 0.367);
-    border-radius: 10px;
-    background-color: black;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    background-color: var(--card-bg);
+    box-shadow: var(--shadow-md);
+    padding: 24px;
 }
 .profile-class button
 {
@@ -17,23 +19,105 @@
     position:relative;
     top: 5em;
     left: 8em;
+    background-color: var(--accent-secondary);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    font-weight: 600;
+    padding: 12px 24px;
+}
+
+.profile-class button:hover
+{
+    background-color: var(--hover-secondary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
 }
 
 .profile-class h2
 {
     font-weight: bold;
     font-size: 40px;
+    color: var(--text-primary);
+    margin-bottom: 24px;
 }
 
 .profile-class p{
-    color: white;
+    color: var(--text-secondary);
     position: relative;
     left: 10em;
+    margin-bottom: 16px;
+    font-size: 1rem;
+    padding: 8px 0;
 }
+
+.profile-class p span {
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.profile-edit
+{
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: var(--shadow-md);
+    width: 60%;
+    margin: 0 auto;
+    position: relative;
+    top: 10em;
+}
+
+.profile-edit input
+{
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border: 1px solid var(--input-border);
+    border-radius: 8px;
+    background-color: var(--input-bg);
+    color: var(--text-primary);
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.profile-edit input:focus
+{
+    outline: none;
+    border-color: var(--input-focus);
+    box-shadow: 0 0 0 3px var(--input-focus-light);
+}
+
 .profile-edit button
 {   
     margin: 5px;
     position: relative;
     top: 3em;
     left: -3px;
+    background-color: var(--accent-primary);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    font-weight: 600;
+    padding: 12px 24px;
+}
+
+.profile-edit button:hover
+{
+    background-color: var(--hover-primary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.profile-edit button[type="button"]
+{
+    background-color: var(--text-muted);
+}
+
+.profile-edit button[type="button"]:hover
+{
+    background-color: var(--text-secondary);
 }
