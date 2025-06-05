@@ -1,9 +1,10 @@
 // controllers/profileController.js
 
 const User = require('../models/userModel');
+const { ObjectId } = require('mongodb');
 
 exports.getProfile = async (req, res) => {
-  const userId = req.user.id;
+  const userId = req.user._id;
   try {
     const user = await User.findById(userId);
     if (!user) {
@@ -21,18 +22,22 @@ exports.getProfile = async (req, res) => {
 };
 
 exports.updateProfile = async (req, res) => {
-  const userId = req.user.id;
+  const userId = req.user._id;
   const { techStack, competitiveRating, favoriteLanguage } = req.body;
   try {
     const user = await User.findById(userId);
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
-    user.techStack = techStack || user.techStack;
-    user.competitiveRating = competitiveRating || user.competitiveRating;
-    user.favoriteLanguage = favoriteLanguage || user.favoriteLanguage;
 
-    const updatedUser = await user.save();
+    const updateData = {
+      ...(techStack && { techStack }),
+      ...(competitiveRating && { competitiveRating }),
+      ...(favoriteLanguage && { favoriteLanguage })
+    };
+
+    await User.updateById(userId, updateData);
+    const updatedUser = await User.findById(userId);
 
     res.json({
       username: updatedUser.username,

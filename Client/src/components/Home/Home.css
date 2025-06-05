@@ -1,60 +1,63 @@
-.Home h1 {
+.Home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+    text-align: center;
+    background-color: var(--primary-bg);
     color: var(--text-primary);
-    font-weight: 800;
-    font-size: 4rem;
-    margin-bottom: 1.5rem;
-    letter-spacing: -0.03em;
-    animation: fadeInDown 1s ease-out;
 }
 
-.Home h1 span {
-    color: var(--accent-color);
+.Home h1 {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    color: var(--accent-primary);
 }
 
 .Home h3 {
-    color: var(--text-secondary);
-    font-weight: 400;
-    font-size: 1.25rem;
-    line-height: 1.8;
     max-width: 800px;
-    margin: 0 auto;
-    animation: fadeInUp 1s ease-out 0.3s backwards;
+    line-height: 1.6;
+    margin-bottom: 3rem;
 }
 
-.Home {
-    background: var(--primary-bg);
-    width: 90%;
-    max-width: 1200px;
-    position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -40%);
-    min-height: 500px;
-    text-align: center;
-    border-radius: 24px;
-    padding: 4rem;
-    box-shadow: 0 4px 24px var(--shadow-color);
-    border: 1px solid var(--border-color);
+.navigation-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    max-width: 600px;
+    width: 100%;
 }
 
-@keyframes fadeInDown {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.navigation-buttons button {
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: white;
+    background-color: var(--accent-primary);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
+.navigation-buttons button:hover {
+    transform: translateY(-2px);
+    background-color: var(--hover-primary);
+}
+
+@media (max-width: 600px) {
+    .navigation-buttons {
+        grid-template-columns: 1fr;
     }
-    to {
-        opacity: 1;
-        transform: translateY(0);
+
+    .Home h1 {
+        font-size: 2rem;
+    }
+
+    .Home h3 {
+        font-size: 1rem;
     }
 }

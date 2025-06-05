@@ -121,3 +121,15 @@
 {
     background-color: var(--text-secondary);
 }
+
+.error-message {
+    color: #f44336;
+    font-size: 0.9rem;
+    margin-top: 8px;
+    text-align: center;
+}
+
+.profile-class p span.rating {
+    color: #43A047;
+    font-weight: 600;
+}

@@ -1,61 +1,85 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import './Auth.css';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
 import HomeButton from '../Home/HomeButton';
+import './Auth.css';
 
 const Login = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [formData, setFormData] = useState({
+    username: '',
+    password: ''
+  });
   const [error, setError] = useState('');
-  const [welcomeMessage, setWelcomeMessage] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
+  const { login, api } = useAuth();
 
-  const handleLogin = async (e) => {
+  // Get the redirect path or default to home
+  const from = location.state?.from?.pathname || '/';
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const loginData = {
-        username,
-        password,
-      };
+    setError('');
+    setIsLoading(true);
 
-      // Include profile information if provided
-      const response = await axios.post('http://localhost:3000/users/login', loginData);
-      const { token } = response.data;
-      localStorage.setItem('token', token);
-      console.log('Login successful. Token stored in local storage.');
-      setWelcomeMessage(`Welcome, ${username}!`);
-      setTimeout(() => {
-        navigate('/'); // Redirect to the home page or any other page
-      }, 1000); // 2-second delay to show the welcome message
+    try {
+      const response = await api.post('/auth/login', formData);
+      const { token, user } = response.data;
+      
+      await login(token, user);
+      
+      // Navigate to the page they tried to visit or home
+      navigate(from, { replace: true });
     } catch (error) {
-      setError('Invalid username or password.');
-      console.error(error);
+      console.error('Login error:', error);
+      setError(
+        error.response?.data?.message || 
+        'Login failed. Please check your credentials and try again.'
+      );
+    } finally {
+      setIsLoading(false);
     }
   };
 
   return (
-    <div>
+    <>
       <HomeButton />
-      <form onSubmit={handleLogin}>
-        <h2>Login</h2>
-        {error && <p className="error">{error}</p>}
-        {welcomeMessage && <p className="welcome">{welcomeMessage}</p>}
-        <input
-          type="text"
-          placeholder="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button type="submit">Login</button>
-      </form>
-    </div>
+      <div className="auth-container">
+        <form onSubmit={handleSubmit} className="auth-form">
+          <h2>Login</h2>
+          {error && <div className="error-message">{error}</div>}
+          <input
+            type="text"
+            name="username"
+            placeholder="Username"
+            value={formData.username}
+            onChange={handleChange}
+            required
+            disabled={isLoading}
+          />
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            value={formData.password}
+            onChange={handleChange}
+            required
+            disabled={isLoading}
+          />
+          <button type="submit" disabled={isLoading}>
+            {isLoading ? 'Logging in...' : 'Login'}
+          </button>
+        </form>
+      </div>
+    </>
   );
 };
 

@@ -6,6 +6,10 @@ import './Home.css';
 const Home = () => {
   const navigate = useNavigate();
 
+  const handleNavigation = (path) => {
+    navigate(path);
+  };
+
   return (
     <>
       <HomeButton />
@@ -16,8 +20,14 @@ const Home = () => {
           Stay updated with real-time notifications, personalize your profile, and utilize advanced search and filtering options to find the contests that best suit your skill level and interests.
           Join us and take your coding skills to the next level with a seamless, user-friendly, and responsive experience.
         </h3>
-      </div>
 
+        <div className="navigation-buttons">
+          <button onClick={() => handleNavigation('/Contest-Calendar')}>Contest Calendar</button>
+          <button onClick={() => handleNavigation('/code-editor')}>Code Editor</button>
+          <button onClick={() => handleNavigation('/problem-list')}>Problem List</button>
+          <button onClick={() => handleNavigation('/profile')}>Profile</button>
+        </div>
+      </div>
     </>
   );
 };

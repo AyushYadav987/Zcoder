@@ -1,17 +1,64 @@
 // models/problemModel.js
 
-const mongoose = require('mongoose');
+const { getDB } = require('../utils/databaseUtils');
+const { ObjectId } = require('mongodb');
 
-const problemSchema = new mongoose.Schema({
-  userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
-  question: { type: String, required: true },
-  answer: { type: String, required: true },
-  isPublic: { type: Boolean, default: false },
-  comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }]
-}, {
-  timestamps: true // Automatically add createdAt and updatedAt fields
-});
+class Problem {
+  constructor(userId, question, answer, isPublic = false) {
+    this.userId = new ObjectId(userId);
+    this.question = question;
+    this.answer = answer;
+    this.isPublic = isPublic;
+    this.comments = [];
+    this.createdAt = new Date();
+    this.updatedAt = new Date();
+  }
 
-const Problem = mongoose.model('Problem', problemSchema);
+  save() {
+    const db = getDB();
+    return db.collection('problems').insertOne(this);
+  }
+
+  static findById(id) {
+    const db = getDB();
+    return db.collection('problems').findOne({ _id: new ObjectId(id) });
+  }
+
+  static findByUserId(userId) {
+    const db = getDB();
+    return db.collection('problems')
+      .find({ userId: new ObjectId(userId) })
+      .toArray();
+  }
+
+  static findPublicProblems() {
+    const db = getDB();
+    return db.collection('problems')
+      .find({ isPublic: true })
+      .toArray();
+  }
+
+  static async updateById(id, updateData) {
+    const db = getDB();
+    updateData.updatedAt = new Date();
+    return db.collection('problems').updateOne(
+      { _id: new ObjectId(id) },
+      { $set: updateData }
+    );
+  }
+
+  static deleteById(id) {
+    const db = getDB();
+    return db.collection('problems').deleteOne({ _id: new ObjectId(id) });
+  }
+
+  static addCommentToProblem(problemId, commentId) {
+    const db = getDB();
+    return db.collection('problems').updateOne(
+      { _id: new ObjectId(problemId) },
+      { $push: { comments: new ObjectId(commentId) } }
+    );
+  }
+}
 
 module.exports = Problem;

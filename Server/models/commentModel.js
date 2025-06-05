@@ -1,12 +1,35 @@
 const { getDB } = require('../utils/databaseUtils');
+const { ObjectId } = require('mongodb');
 
-const commentSchema = new mongoose.Schema({
-  userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-  problemId: { type: mongoose.Schema.Types.ObjectId, ref: 'Problem' },
-  text: { type: String, required: true },
-  createdAt: { type: Date, default: Date.now }
-});
+class Comment {
+  constructor(userId, problemId, text) {
+    this.userId = new ObjectId(userId);
+    this.problemId = new ObjectId(problemId);
+    this.text = text;
+    this.createdAt = new Date();
+  }
 
-const Comment = mongoose.model('Comment', commentSchema);
+  save() {
+    const db = getDB();
+    return db.collection('comments').insertOne(this);
+  }
+
+  static findById(id) {
+    const db = getDB();
+    return db.collection('comments').findOne({ _id: new ObjectId(id) });
+  }
+
+  static findByProblemId(problemId) {
+    const db = getDB();
+    return db.collection('comments')
+      .find({ problemId: new ObjectId(problemId) })
+      .toArray();
+  }
+
+  static deleteById(id) {
+    const db = getDB();
+    return db.collection('comments').deleteOne({ _id: new ObjectId(id) });
+  }
+}
 
 module.exports = Comment;
