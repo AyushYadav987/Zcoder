@@ -94,8 +94,8 @@ ZCoder is a collaborative coding platform that enhances learning through interac
 ## Authors
  - Aditya Sahu
 
-For questions or feedback, open an issue on GitHub or contact: **\[[your-email@example.com](mailto:awesomeadi457@gmail.com)]**
+For questions or feedback, open an issue on GitHub or contact: **\[[awesomeadi457@gmail.com](mailto:awesomeadi457@gmail.com)]**
 
 ---
 
-*Thank you for using Scholarship Finder!*
+*Thank you for using ZCoder!*
