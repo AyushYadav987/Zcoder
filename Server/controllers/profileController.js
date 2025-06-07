@@ -14,7 +14,8 @@ exports.getProfile = async (req, res) => {
       username: user.username,
       techStack: user.techStack,
       competitiveRating: user.competitiveRating,
-      favoriteLanguage: user.favoriteLanguage
+      favoriteLanguage: user.favoriteLanguage,
+      codeforcesUsername: user.codeforcesUsername
     });
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -23,7 +24,7 @@ exports.getProfile = async (req, res) => {
 
 exports.updateProfile = async (req, res) => {
   const userId = req.user._id;
-  const { techStack, competitiveRating, favoriteLanguage } = req.body;
+  const { techStack, competitiveRating, favoriteLanguage, codeforcesUsername } = req.body;
   try {
     const user = await User.findById(userId);
     if (!user) {
@@ -33,7 +34,8 @@ exports.updateProfile = async (req, res) => {
     const updateData = {
       ...(techStack && { techStack }),
       ...(competitiveRating && { competitiveRating }),
-      ...(favoriteLanguage && { favoriteLanguage })
+      ...(favoriteLanguage && { favoriteLanguage }),
+      ...(codeforcesUsername !== undefined && { codeforcesUsername })
     };
 
     await User.updateById(userId, updateData);
@@ -43,7 +45,8 @@ exports.updateProfile = async (req, res) => {
       username: updatedUser.username,
       techStack: updatedUser.techStack,
       competitiveRating: updatedUser.competitiveRating,
-      favoriteLanguage: updatedUser.favoriteLanguage
+      favoriteLanguage: updatedUser.favoriteLanguage,
+      codeforcesUsername: updatedUser.codeforcesUsername
     });
   } catch (error) {
     res.status(500).json({ message: error.message });

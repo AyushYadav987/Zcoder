@@ -6,7 +6,8 @@ const api = axios.create({
   baseURL: API_URL,
   headers: {
     'Content-Type': 'application/json'
-  }
+  },
+  withCredentials: true // Enable sending cookies with requests
 });
 
 // Add a request interceptor
@@ -35,5 +36,13 @@ api.interceptors.response.use(
     return Promise.reject(error);
   }
 );
+
+// Auth endpoints
+api.auth = {
+  register: (data) => api.post('/users/signup', data),
+  login: (data) => api.post('/users/login', data),
+  logout: () => api.post('/users/logout'),
+  verify: () => api.get('/users/verify')
+};
 
 export default api; 

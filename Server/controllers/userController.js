@@ -11,7 +11,7 @@ const generateToken = (id) => {
     // Ensure id is a string
     const idString = id instanceof ObjectId ? id.toString() : String(id);
     return jwt.sign({ id: idString }, JWT_SECRET, { 
-      expiresIn: '30d',
+      expiresIn: '24h',
       algorithm: 'HS256' // Explicitly specify the algorithm
     });
   } catch (error) {
@@ -52,13 +52,31 @@ exports.signup = async (req, res) => {
 
     const token = generateToken(result.insertedId);
 
-    res.status(201).json({
-      status: 'success',
-      data: {
-        _id: result.insertedId.toString(),
-        username: user.username,
-        token
+    // Initialize session
+    req.session.user = {
+      _id: result.insertedId.toString(),
+      username: user.username
+    };
+    req.session.isAuthenticated = true;
+
+    // Save session before sending response
+    req.session.save((err) => {
+      if (err) {
+        console.error('Session save error:', err);
+        return res.status(500).json({
+          status: 'error',
+          message: 'Error creating session'
+        });
       }
+
+      res.status(201).json({
+        status: 'success',
+        data: {
+          _id: result.insertedId.toString(),
+          username: user.username,
+          token
+        }
+      });
     });
   } catch (error) {
     console.error('Signup Error:', error);
@@ -91,19 +109,102 @@ exports.login = async (req, res) => {
 
     const token = generateToken(user._id);
 
-    res.json({
-      status: 'success',
-      data: {
-        _id: user._id.toString(),
-        username: user.username,
-        token
+    // Initialize session
+    req.session.user = {
+      _id: user._id.toString(),
+      username: user.username
+    };
+    req.session.isAuthenticated = true;
+
+    // Save session before sending response
+    req.session.save((err) => {
+      if (err) {
+        console.error('Session save error:', err);
+        return res.status(500).json({
+          status: 'error',
+          message: 'Error creating session'
+        });
       }
+
+      res.json({
+        status: 'success',
+        data: {
+          _id: user._id.toString(),
+          username: user.username,
+          token
+        }
+      });
     });
   } catch (error) {
     console.error('Login Error:', error);
     res.status(500).json({
       status: 'error',
       message: 'Error during login'
+    });
+  }
+};
+
+exports.logout = async (req, res) => {
+  try {
+    // Destroy the session
+    req.session.destroy((err) => {
+      if (err) {
+        console.error('Session destruction error:', err);
+        return res.status(500).json({
+          status: 'error',
+          message: 'Error during logout'
+        });
+      }
+      
+      // Clear the session cookie
+      res.clearCookie('sessionId');
+      
+      res.json({
+        status: 'success',
+        message: 'Logged out successfully'
+      });
+    });
+  } catch (error) {
+    console.error('Logout Error:', error);
+    res.status(500).json({
+      status: 'error',
+      message: 'Error during logout'
+    });
+  }
+};
+
+exports.verify = async (req, res) => {
+  try {
+    if (!req.session || !req.session.user || !req.session.isAuthenticated) {
+      return res.status(401).json({
+        status: 'error',
+        message: 'Not authenticated'
+      });
+    }
+
+    const user = await User.findById(new ObjectId(req.session.user._id));
+    if (!user) {
+      req.session.destroy();
+      return res.status(401).json({
+        status: 'error',
+        message: 'User no longer exists'
+      });
+    }
+
+    res.json({
+      status: 'success',
+      data: {
+        user: {
+          _id: user._id.toString(),
+          username: user.username
+        }
+      }
+    });
+  } catch (error) {
+    console.error('Verify Error:', error);
+    res.status(500).json({
+      status: 'error',
+      message: 'Error verifying authentication'
     });
   }
 };

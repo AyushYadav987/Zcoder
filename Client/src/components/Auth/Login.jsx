@@ -31,13 +31,15 @@ const Login = () => {
     setIsLoading(true);
 
     try {
-      const response = await api.post('/auth/login', formData);
-      const { token, user } = response.data;
+      const response = await api.auth.login(formData);
       
-      await login(token, user);
-      
-      // Navigate to the page they tried to visit or home
-      navigate(from, { replace: true });
+      if (response.data.status === 'success') {
+        const { token, _id, username } = response.data.data;
+        await login(token, { _id, username });
+        navigate(from, { replace: true });
+      } else {
+        setError('Login failed. Please check your credentials.');
+      }
     } catch (error) {
       console.error('Login error:', error);
       setError(

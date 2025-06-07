@@ -1,5 +1,27 @@
 {
+  "name": "ZCoder",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "concurrently \"npm start --prefix server\" \"npm run dev --prefix client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Asahu25/ZCoder.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Asahu25/ZCoder/issues"
+  },
+  "homepage": "https://github.com/Asahu25/ZCoder#readme",
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  },
   "dependencies": {
-    "axios": "^1.7.2"
+    "connect-mongodb-session": "^5.0.0"
   }
 }

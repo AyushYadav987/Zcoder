@@ -32,11 +32,13 @@ const fetchCodeChefContests = async () => {
 
 const fetchAtCoderContests = async () => {
     try {
-        const response = await axios.get('https://kenkoooo.com/atcoder/resources/contests.json');
-        const contests = response.data.contests;
+        const response = await axios.get('https://atcoder.jp/contests/api/v1/contest.json');
+        const now = new Date().getTime();
+        const contests = response.data.filter(contest => new Date(contest.start_time).getTime() > now);
+        
         return contests.map(contest => ({
             name: contest.title,
-            date: new Date(contest.start_time * 1000),
+            date: new Date(contest.start_time),
             link: `https://atcoder.jp/contests/${contest.id}`
         }));
     } catch (error) {

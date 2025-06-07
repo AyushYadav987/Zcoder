@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
-import logo from '../../assets/logo-final1.png';
+import logo from '../../images/zcoder_logo.svg';
 import './Homebutton.css';
 
 const HomeButton = () => {
@@ -20,66 +20,66 @@ const HomeButton = () => {
 
   return (
     <div className="dashboard">
-      <img src={logo} alt="Logo" className="Logo" onClick={() => navigate('/')} />
+      <img src={logo} alt="Logo" className="Logo" onClick={() => navigate('/profile')} />
       <div className="restdiv">
         {isAuthenticated && (
           <>
-            <text 
-              onClick={() => navigate('/profile')} 
-              className={isActive('/profile') ? 'active' : ''}
+            <span 
+              onClick={() => navigate('/Blog')} 
+              className={isActive('/Blog') ? 'active' : ''}
             >
-              Profile
-            </text>
-            <text 
-              onClick={() => navigate('/Dashboard')} 
-              className={isActive('/Dashboard') ? 'active' : ''}
-            >
-              Dashboard
-            </text>
-            <text 
+              Blog
+            </span>
+            <span 
               onClick={() => navigate('/add-problem')} 
               className={isActive('/add-problem') ? 'active' : ''}
             >
-              Add Problem
-            </text>
-            <text 
-              onClick={() => navigate('/problem-list')} 
-              className={isActive('/problem-list') ? 'active' : ''}
+              Add a Problem
+            </span>
+            <span 
+              onClick={() => navigate('/problems')} 
+              className={isActive('/problems') ? 'active' : ''}
             >
               Problem List
-            </text>
-            <text 
-              onClick={() => navigate('/Contest-Calendar')} 
-              className={isActive('/Contest-Calendar') ? 'active' : ''}
+            </span>
+            <span 
+              onClick={() => navigate('/UpcommingContest')} 
+              className={isActive('/UpcommingContest') ? 'active' : ''}
             >
-              Contest-Calendar
-            </text>
+              Upcomming Contests
+            </span>
+            <span 
+              onClick={() => navigate('/code-editor')} 
+              className={isActive('/code-editor') ? 'active' : ''}
+            >
+              Code Editor
+            </span>
           </>
         )}
       </div>
       <div className="logindiv">
         {!isAuthenticated ? (
           <>
-            <text 
+            <span 
               onClick={() => navigate('/signup')} 
               className={isActive('/signup') ? 'active' : ''}
             >
               Signup
-            </text>
-            <text 
+            </span>
+            <span 
               onClick={() => navigate('/login')} 
               className={isActive('/login') ? 'active' : ''}
             >
               Login
-            </text>
+            </span>
           </>
         ) : (
-          <text 
+          <span 
             onClick={handleLogout}
             className="logout-btn"
           >
             Logout
-          </text>
+          </span>
         )}
       </div>
     </div>

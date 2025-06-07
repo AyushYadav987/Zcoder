@@ -58,15 +58,6 @@ const AddProblem = () => {
         value={problem.answer}
         onChange={handleChange}
       />
-      <label>
-        <input
-          type="checkbox"
-          name="isPublic"
-          checked={problem.isPublic}
-          onChange={handleChange}
-        />
-        <p>Make Public</p>
-      </label>
       <button type="submit">Save Problem</button>
     </form>
     </div>

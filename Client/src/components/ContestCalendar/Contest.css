@@ -1,66 +1,194 @@
+:root {
+  --contest-primary: #4f46e5;
+  --contest-secondary: #7c3aed;
+  --contest-gradient: linear-gradient(135deg, var(--contest-primary), var(--contest-secondary));
+  --contest-shadow: 0 10px 30px -5px rgba(79, 70, 229, 0.2);
+  --contest-warning: #f59e0b;
+}
+
 .contest-container {
-    padding: 20px;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    background-color: var(--secondary-bg);
+  padding: 40px 20px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.warn
-{
-    position: relative;
-    top: 5em;
-    color: var(--accent-warning);
+
+.warn {
+  position: relative;
+  margin-top: 2em;
+  color: var(--contest-warning);
+  background: rgba(245, 158, 11, 0.1);
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  animation: slideIn 0.3s ease;
+  border: 1px solid rgba(245, 158, 11, 0.2);
+  backdrop-filter: blur(8px);
 }
-h1 , h3 {
-    text-align: center;
-    color: var(--text-primary);
+
+h1, h3 {
+  text-align: center;
+  background: var(--contest-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+h1::after, h3::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: var(--contest-gradient);
+  border-radius: 2px;
 }
 
 .contest-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 40px;
-    width: 30%;
-    background-color: var(--card-bg);
-    position: relative;
-    top: 5em;
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
-    padding: 24px;
-    box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 3em auto;
+  width: min(500px, 90%);
+  background: rgba(255, 255, 255, 0.95);
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: var(--contest-shadow);
+  backdrop-filter: blur(10px);
+  transform-style: preserve-3d;
+  transition: all 0.4s ease;
 }
+
+.contest-form::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--contest-gradient);
+  border-radius: 20px 20px 0 0;
+}
+
+.contest-form:hover {
+  transform: translateY(-5px) rotateX(2deg);
+  box-shadow: 0 15px 35px -5px rgba(79, 70, 229, 0.25);
+}
+
+.input-group {
+  width: 100%;
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
 .contest-form input {
-    width: 95%;
-    padding: 12px;
-    margin: 8px 0;
-    border: 1px solid var(--input-border);
-    border-radius: 8px;
-    background-color: var(--input-bg);
-    color: var(--text-primary);
-    font-weight: 500;
-    transition: all 0.2s ease;
+  width: 100%;
+  padding: 1rem 1.2rem;
+  margin: 8px 0;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #1e293b;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .contest-form input:focus {
-    outline: none;
-    border-color: var(--input-focus);
-    box-shadow: 0 0 0 3px var(--input-focus-light);
+  outline: none;
+  border-color: var(--contest-primary);
+  box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
+  transform: translateY(-1px);
+}
+
+.contest-form input::placeholder {
+  color: #94a3b8;
 }
 
 .contest-form button {
-    padding: 12px 24px;
-    background-color: var(--accent-primary);
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    position: relative;
-    top: 10%;
-    font-weight: 600;
-    transition: all 0.2s ease;
+  padding: 1rem 2rem;
+  background: var(--contest-gradient);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  margin-top: 1rem;
+  min-width: 160px;
 }
+
+.contest-form button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: 0.5s;
+}
+
+.contest-form button:hover::before {
+  left: 100%;
+}
+
 .contest-form button:hover {
-    background-color: var(--hover-primary);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px -4px rgba(79, 70, 229, 0.4);
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .contest-form {
+    width: 95%;
+    padding: 1.5rem;
+  }
+  
+  h1 {
+    font-size: 1.75rem;
+  }
+  
+  h3 {
+    font-size: 1.25rem;
+  }
+  
+  .contest-form input {
+    padding: 0.875rem 1rem;
+  }
+  
+  .contest-form button {
+    padding: 0.875rem 1.5rem;
+  }
 }
 

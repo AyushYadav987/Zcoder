@@ -3,73 +3,70 @@ import axios from 'axios';
 
 const AuthContext = createContext(null);
 
-// Create axios instance with base configuration
 const api = axios.create({
   baseURL: 'http://localhost:3000',
   headers: {
     'Content-Type': 'application/json'
-  }
+  },
+  withCredentials: true 
 });
 
-// Add interceptor to add token to all requests
-api.interceptors.request.use(
-  (config) => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
-    }
-    return config;
-  },
-  (error) => {
-    return Promise.reject(error);
-  }
-);
+api.auth = {
+  register: (data) => api.post('/users/signup', data),
+  login: (data) => api.post('/users/login', data),
+  logout: () => api.post('/users/logout'),
+  verify: () => api.get('/users/verify')
+};
 
 export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    checkAuthStatus();
-  }, []);
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    delete api.defaults.headers.common['Authorization'];
+    setIsAuthenticated(false);
+    setUser(null);
+  };
 
   const checkAuthStatus = async () => {
-    try {
-      const token = localStorage.getItem('token');
-      if (!token) {
-        setLoading(false);
-        return;
-      }
+    const token = localStorage.getItem('token');
+    
+    if (!token) {
+      setLoading(false);
+      return handleLogout();
+    }
 
-      const response = await api.get('/auth/verify');
-      if (response.data.valid) {
+    try {
+      // Set token in headers for verification request
+      api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+      const response = await api.auth.verify();
+      
+      if (response.data && response.data.status === 'success') {
         setIsAuthenticated(true);
-        setUser(response.data.user);
+        setUser(response.data.data.user);
       } else {
         handleLogout();
       }
     } catch (error) {
-      console.error('Auth check failed:', error);
+      console.error('Auth check failed:', error?.response?.data || error.message);
       handleLogout();
     } finally {
       setLoading(false);
     }
   };
 
-  const handleLogout = () => {
-    localStorage.removeItem('token');
-    setIsAuthenticated(false);
-    setUser(null);
-  };
+  useEffect(() => {
+    checkAuthStatus();
+  }, []);
 
   const login = async (token, userData) => {
     try {
       localStorage.setItem('token', token);
+      api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
       setIsAuthenticated(true);
       setUser(userData);
-      // Set the token in axios default headers
-      api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
     } catch (error) {
       console.error('Login failed:', error);
       handleLogout();
@@ -79,12 +76,10 @@ export const AuthProvider = ({ children }) => {
 
   const logout = async () => {
     try {
-      // Call logout endpoint if you have one
-      // await api.post('/auth/logout');
-      handleLogout();
+      await api.auth.logout();
     } catch (error) {
-      console.error('Logout failed:', error);
-      // Still clear the local state even if the server call fails
+      console.error('Logout failed:', error?.response?.data || error.message);
+    } finally {
       handleLogout();
     }
   };
@@ -96,7 +91,7 @@ export const AuthProvider = ({ children }) => {
       loading, 
       login, 
       logout,
-      api // Export the configured axios instance
+      api
     }}>
       {children}
     </AuthContext.Provider>

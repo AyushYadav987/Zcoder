@@ -88,7 +88,7 @@ ZCoder is a sophisticated web platform designed to help users track their compet
 
 ![your-problems](./snippet/your-problems.png)<br>
 
-8. Dashboard<br>
+8. Blog<br>
 
 ![dashboard](./snippet/dashboard.png)<br>
 

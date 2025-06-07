@@ -2,14 +2,13 @@ import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useAuth } from './context/AuthContext';
 
-// Components
-import Home from './components/Home/Home';
 import Login from './components/Auth/Login';
 import Signup from './components/Auth/Signup';
 import Profile from './components/Profile/Profile';
 import AddProblem from './components/Problems/AddProblem';
 import ProblemList from './components/Problems/ProblemList';
-import Dashboard from './components/Dashboard/Dashboard';
+import Blog from './components/Blog/Blog';
+import CreatePost from './components/Blog/CreatePost';
 import Contest from './components/ContestCalendar/Contest';
 import CodeEditor from './components/CodeEditor/CodeEditor';
 
@@ -32,11 +31,10 @@ const AppRoutes = () => {
   return (
     <Routes>
       {/* Public Routes */}
-      <Route path="/" element={<Home />} />
+      <Route path="/" element={<Navigate to="/profile" />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
 
-      {/* Protected Routes */}
       <Route
         path="/profile"
         element={
@@ -54,7 +52,7 @@ const AppRoutes = () => {
         }
       />
       <Route
-        path="/problem-list"
+        path="/problems"
         element={
           <ProtectedRoute>
             <ProblemList />
@@ -62,15 +60,23 @@ const AppRoutes = () => {
         }
       />
       <Route
-        path="/Dashboard"
+        path="/blog"
         element={
           <ProtectedRoute>
-            <Dashboard />
+            <Blog />
           </ProtectedRoute>
         }
       />
       <Route
-        path="/Contest-Calendar"
+        path="/create-post"
+        element={
+          <ProtectedRoute>
+            <CreatePost />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/UpcommingContest"
         element={
           <ProtectedRoute>
             <Contest />
@@ -86,7 +92,6 @@ const AppRoutes = () => {
         }
       />
 
-      {/* Catch all - 404 */}
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );

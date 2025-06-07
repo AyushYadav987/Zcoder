@@ -1,0 +1,33 @@
+<svg viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#6366f1;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#06b6d4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background circle for icon -->
+  <circle cx="30" cy="30" r="25" fill="url(#logoGradient)" opacity="0.1"/>
+  
+  <!-- Code brackets -->
+  <path d="M15 20 L10 25 L10 35 L15 40" stroke="url(#logoGradient)" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M45 20 L50 25 L50 35 L45 40" stroke="url(#logoGradient)" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Central Z symbol -->
+  <path d="M22 22 L38 22 L22 38 L38 38" stroke="url(#accentGradient)" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- ZCoder text -->
+  <text x="70" y="25" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="url(#logoGradient)">ZCoder</text>
+  
+  <!-- Tagline -->
+  <text x="70" y="42" font-family="Arial, sans-serif" font-size="10" fill="#6b7280">Competitive Programming</text>
+  
+  <!-- Decorative elements -->
+  <circle cx="180" cy="15" r="2" fill="url(#accentGradient)" opacity="0.6"/>
+  <circle cx="185" cy="20" r="1.5" fill="url(#logoGradient)" opacity="0.4"/>
+  <circle cx="175" cy="25" r="1" fill="url(#accentGradient)" opacity="0.8"/>
+</svg>
