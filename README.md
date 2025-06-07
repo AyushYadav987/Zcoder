@@ -75,8 +75,7 @@ ZCoder is a collaborative coding platform that enhances learning through interac
 <img width="1470" alt="Screenshot 2025-06-07 at 12 30 48" src="https://github.com/user-attachments/assets/cc17979a-5943-41f1-9aba-5fd36e4d4a2e" />
 
 
-4. Edit Profile<<img width="1470" alt="Screenshot 2025-06-07 at 12 31 44" src="https://github.com/user-attachments/assets/e55a36b5-4866-4650-b114-1fd0f11f55af" />
-br>
+4. Edit Profile<br><img width="1470" alt="Screenshot 2025-06-07 at 12 31 44" src="https://github.com/user-attachments/assets/e55a36b5-4866-4650-b114-1fd0f11f55af" />
 
 
 5. Add Problem<br>
