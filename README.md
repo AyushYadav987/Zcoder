@@ -95,8 +95,6 @@ br>
 ## Authors
  - Aditya Sahu
 
-For questions or feedback, open an issue on GitHub or contact: **\[[awesomeadi457@gmail.com](mailto:awesomeadi457@gmail.com)]**
-
 ---
 
 *Thank you for using ZCoder!*
