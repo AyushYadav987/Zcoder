@@ -1,4 +1,4 @@
-<img width="1470" alt="Screenshot 2025-06-07 at 12 31 44" src="https://github.com/user-attachments/assets/8426a804-ba08-45da-8de1-2ba1986e817e" /># Project_ZCoder
+# Project_ZCoder
 
 ## Description
 ZCoder is a collaborative coding platform that enhances learning through interaction and personalization. Users can create profiles, bookmark coding problems with solutions, and engage with others through comments and feedback. With features like a live code editor and interactive rooms, the platform is ideal for practice and peer collaboration.
