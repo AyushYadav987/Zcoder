@@ -1,22 +1,28 @@
 # Project_ZCoder
 
 ## Description
-ZCoder is a sophisticated web platform designed to help users track their competitive programming journey by creating and managing contest calendars for various coding websites. This project utilizes Node.js, WebSocket, MongoDB, and React.js to provide a seamless and interactive experience for users.
+ZCoder is a collaborative coding platform that enhances learning through interaction and personalization. Users can create profiles, bookmark coding problems with solutions, and engage with others through comments and feedback. With features like a live code editor and interactive rooms, the platform is ideal for practice and peer collaboration.
 
-## Features
- - **Contest Calenders:** Create and manage personalized calendars for coding contests across multiple platforms.
- - **Real Time Updates:** Integrated WebSocket for real-time notifications and updates on contest schedules.
- - **User Profiles:** Maintain personalized profiles to track progress, participation history, and favorite contests.
- - **Search and Filters:** Advanced search and filter options to find contests by platform, date, difficulty, and more.
- - **Responsive Design:** Responsive and user-friendly interface built with React.js, ensuring accessibility across various devices.
+##Features
 
-    
+- **User Profiles Section** – Detailed profiles with saved problems, solutions, and contributions.
+- **Code Bookmarking** – Save and organize coding problems with tags based on topics.
+- **Interactive Rooms** – Real-time chat spaces for peer discussion and collaboration.
+- **Inbuilt Code Editor** – Integrated editor with real-time output for hands-on coding practice.
+- **JWT Authentication** – Secure login and session management using JSON Web Tokens.
+
+## Goals
+
+- **Personalized Profiles** – Build a unique coding identity and connect with peers.
+- **Collaborative Learning** – Share solutions, give feedback, and learn from others.
+- **Efficient Practice** – Practice coding with accessible tools and saved resources.
 
 ## Technologies Used
 
-- **Frontend:** React.js, Axios
-- **Backend:** Node.js, Express   
-- **Database:** MongoDB, Mongoose
+- **Frontend:** HTML + CSS, React.js, Axios
+- **Backend:** Node.js, Express.js  
+- **Database:** MongoDB
+- **Authentication:** JWT (JSON Web Tokens)  
 - **Real-time Communication:** WebSocket
 
 ## Installation and Setup
@@ -27,34 +33,31 @@ ZCoder is a sophisticated web platform designed to help users track their compet
 
 2. **Clone the Repository:**
    ```sh
-   git clone https://github.com/deepakkumartripathi119/Zcoder.git
-   cd zcoder
+   git clone https://github.com/Asahu25/ZCoder.git
+   cd ZCoder
    ```
 
 3. **Backend Setup:**
-   - Navigate to the backend directory.
+   - Navigate to the Server directory.
    - Install dependencies:
      ```sh
-     cd backend
+     cd Server
      npm install
-     ```
-   - Start the server:
-     ```sh
-     node index.js
      
 
 4. **Frontend Setup:**
-   - Navigate to the frontend directory.
+   - Navigate to the Client directory.
    - Install dependencies:
      ```sh
-     cd frontend
+     cd Client
      npm install
      ```
-   - Start the React app:
-     ```sh
-     npm run dev
-     ```
-   - The application should now be running on `http://localhost:3000`.
+5. **Start The App **
+   -In the Root Directory
+   ```sh
+    npm start
+   ```
+   - The application should now be running on `http://localhost:5173`.
 
 
 ## Web Application Snippets
@@ -62,49 +65,31 @@ ZCoder is a sophisticated web platform designed to help users track their compet
 
 1. Home Page<br>
 
-![home](./snippet/home.png)<br>
 
 2. Sign Up<br>
 
-![signup](./snippet/signup.png)<br>
 
 3. LogIn<br>
 
-![login](./snippet/login.png)<br>
 
 4. profile<br>
 
-![profile](./snippet/profile.png)<br>
 
 5. Edit Profile<br>
 
-![edit-profile](./snippet/edit-profile.png)<br>
 
 6. Add Problem<br>
 
-![add-problems](./snippet/add-problems.png)<br>
 
 7. Problem List<br>
 
-![your-problems](./snippet/your-problems.png)<br>
 
 8. Blog<br>
 
-![dashboard](./snippet/dashboard.png)<br>
 
-9. Contest Calander<br>
-
-![contest-calander](./snippet/contest-calander.png)<br>
+9. Upcomming Contests<br>
 
 
-## Contributing
-We welcome contributions from the community. If you wish to contribute to ZCoder, please follow these steps:
- - Fork the repository.
- - Create a new branch (git checkout -b feature/your-feature).
- - Make your changes.
- - Commit your changes (git commit -am 'Add some feature').
- - Push to the branch (git push origin feature/your-feature).
- - Open a Pull Request for review.
- 
-## Acknowledgements
-We would like to extend our gratitude to the developers and contributors of the libraries and frameworks utilized in this project.
+
+## Authors
+ - Aditya Sahu
