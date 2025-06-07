@@ -43,7 +43,7 @@ ZCoder is a collaborative coding platform that enhances learning through interac
      ```sh
      cd Server
      npm install
-     
+     ```
 
 4. **Frontend Setup:**
    - Navigate to the Client directory.
