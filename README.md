@@ -1,4 +1,4 @@
-# Project_ZCoder
+<img width="1470" alt="Screenshot 2025-06-07 at 12 31 44" src="https://github.com/user-attachments/assets/8426a804-ba08-45da-8de1-2ba1986e817e" /># Project_ZCoder
 
 ## Description
 ZCoder is a collaborative coding platform that enhances learning through interaction and personalization. Users can create profiles, bookmark coding problems with solutions, and engage with others through comments and feedback. With features like a live code editor and interactive rooms, the platform is ideal for practice and peer collaboration.
@@ -63,33 +63,34 @@ ZCoder is a collaborative coding platform that enhances learning through interac
 ## Web Application Snippets
 
 
-1. Home Page<br>
+1. Profile Page<br>
+<img width="1470" alt="Screenshot 2025-06-07 at 12 31 50" src="https://github.com/user-attachments/assets/9a1812f9-513b-4b96-8a65-7a709e8fb645" />
 
 
 2. Sign Up<br>
+<img width="1470" alt="Screenshot 2025-06-07 at 12 30 54" src="https://github.com/user-attachments/assets/de99e739-709a-4099-9f6b-1025c12a2123" />
 
 
 3. LogIn<br>
+<img width="1470" alt="Screenshot 2025-06-07 at 12 30 48" src="https://github.com/user-attachments/assets/cc17979a-5943-41f1-9aba-5fd36e4d4a2e" />
 
 
-4. profile<br>
+4. Edit Profile<<img width="1470" alt="Screenshot 2025-06-07 at 12 31 44" src="https://github.com/user-attachments/assets/e55a36b5-4866-4650-b114-1fd0f11f55af" />
+br>
 
 
-5. Edit Profile<br>
+5. Add Problem<br>
+<img width="1470" alt="Screenshot 2025-06-07 at 12 32 14" src="https://github.com/user-attachments/assets/6205f0f7-a903-43a8-96fb-366994d93699" />
 
 
-6. Add Problem<br>
+6. Problem List<br>
+<img width="1470" alt="Screenshot 2025-06-07 at 12 32 43" src="https://github.com/user-attachments/assets/8ae72f1d-4885-4c62-9ae7-bcc364053c20" />
 
-
-7. Problem List<br>
-
+7. Create A Blog<br>
+<img width="1470" alt="Screenshot 2025-06-07 at 12 32 10" src="https://github.com/user-attachments/assets/bb43f085-b915-4d6a-800a-59c5a77b4dc7" />
 
 8. Blog<br>
-
-
-9. Upcomming Contests<br>
-
-
+<img width="1470" alt="Screenshot 2025-06-07 at 12 32 03" src="https://github.com/user-attachments/assets/11e9700c-dcc4-474e-965d-a1db2e4a3a14" />
 
 ## Authors
  - Aditya Sahu
