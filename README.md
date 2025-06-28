@@ -33,7 +33,7 @@ ZCoder is a collaborative coding platform that enhances learning through interac
 
 2. **Clone the Repository:**
    ```sh
-   git clone https://github.com/Asahu25/ZCoder.git
+   git clone https://github.com/AyushYadav987/Zcoder.git
    cd ZCoder
    ```
 
@@ -60,7 +60,7 @@ ZCoder is a collaborative coding platform that enhances learning through interac
    - The application should now be running on `http://localhost:5173`.
 
 
-## Web Application Snippets
+<!-- ## Web Application Snippets
 
 
 1. Profile Page<br>
@@ -89,10 +89,12 @@ ZCoder is a collaborative coding platform that enhances learning through interac
 <img width="1470" alt="Screenshot 2025-06-07 at 12 32 10" src="https://github.com/user-attachments/assets/bb43f085-b915-4d6a-800a-59c5a77b4dc7" />
 
 8. Blog<br>
-<img width="1470" alt="Screenshot 2025-06-07 at 12 32 03" src="https://github.com/user-attachments/assets/11e9700c-dcc4-474e-965d-a1db2e4a3a14" />
+<img width="1470" alt="Screenshot 2025-06-07 at 12 32 03" src="https://github.com/user-attachments/assets/11e9700c-dcc4-474e-965d-a1db2e4a3a14" /> -->
 
 ## Authors
- - Aditya Sahu
+ - Ayush yadav
+ - Krishna chippa
+ - Parth agarwal
 
 ---
 
