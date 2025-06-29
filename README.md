@@ -1,7 +1,7 @@
 # ZCoder
 
 ## Description
-ZCoder is a collaborative coding platform that enhances learning through interaction and personalization. Users can create profiles, bookmark coding problems with solutions, and engage with others through comments and feedback. With features like a live code editor and interactive rooms, the platform is ideal for practice and peer collaboration. nice
+ZCoder is a collaborative coding platform that enhances learning through interaction and personalization. Users can create profiles, bookmark coding problems with solutions, and engage with others through comments and feedback. With features like a live code editor and interactive rooms, the platform is ideal for practice and peer collaboration.
 
 ## Key Features
 
